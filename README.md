@@ -1,6 +1,6 @@
 # EE CARD
 
-### Company Credit card that the employees can rent and reduce it from your salary
+### Company Credit Card that the employees can rent
 
 * Techologies:
   * [typescript](https://www.typescriptlang.org/)
