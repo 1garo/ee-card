@@ -1,11 +1,20 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "commonJS",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "sourceMap": true,
     "outDir": "dist",
     "esModuleInterop": true,
     "baseUrl": ".",
+    "experimentalDecorators": true,
+    "target": "es6",
+    // "allowJs": true,
+    // // Generate d.ts files
+    // "declaration": true,
+    // // This compiler run should
+    // // only output d.ts files
+    // "emitDeclarationOnly": true,
     "resolveJsonModule": true,
     "paths": {
       "*": ["node_modules/*"]
