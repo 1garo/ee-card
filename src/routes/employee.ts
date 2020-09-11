@@ -11,6 +11,7 @@ router.get('/employee', [], (req: Request, res: Response) => {
 });
 
 router.post('/employee', [], (req: Request, res: Response) => {
+  // TODO: call service with a filled employee model | service call dao. 
   return res.send('new todo created')
 });
 
