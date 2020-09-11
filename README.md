@@ -13,6 +13,14 @@ The idea is that the employee is able to rent a cash card with more quota than h
 
  
 ## Usage
+**- create .env file with the following content:**
+
+```json
+DB_HOST=<hostname>
+DB_USER=<username> 
+DB_PASS=<password>
+DB_NAME=<table_name>
+```
 
 * Endopoints:
   * /employee - [GET and POST];
