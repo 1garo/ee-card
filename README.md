@@ -2,6 +2,9 @@
 
 ### Company Credit Card that the employees can rent
 
+The idea is that the employee is able to rent a cash card with more quota than he usually have, and use it on a vacation, buying something for him or his family,
+many times personal card you have to be with the same company for a long time to get more quota/limit.
+
 * Techologies:
   * [typescript](https://www.typescriptlang.org/)
   * [node.js](https://nodejs.org/en/)
