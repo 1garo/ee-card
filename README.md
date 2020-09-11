@@ -1,12 +1,14 @@
 # EE CARD
 
 ### Company Credit card that the employees can rent and reduce it from your salary
-*Tech
- * (typescript)[https://www.typescriptlang.org/] 
- * (node.js)[https://nodejs.org/en/]
- * (electron)[https://www.electronjs.org/]
- * (express)[https://expressjs.com/]
- * (postgres)[https://www.postgresql.org/]
+
+* Techologies:
+  * [typescript](https://www.typescriptlang.org/)
+  * [node.js](https://nodejs.org/en/)
+  * [electron](https://www.electronjs.org/)
+  * [express](https://expressjs.com/)
+  * [postgres](https://www.postgresql.org/)
+ 
 ## Usage
 
 * Endopoints:
