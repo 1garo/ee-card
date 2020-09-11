@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { app, BrowserWindow } from 'electron';
 import {createWindow} from './app/window';
 
