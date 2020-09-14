@@ -10,7 +10,7 @@ The idea is that the employee is able to rent a cash card with more quota than h
   * [electron](https://www.electronjs.org/)
   * [express](https://expressjs.com/)
   * [postgres](https://www.postgresql.org/) ``` aim to use the db on docker later on```
-  * [sequelize](https://sequelize.org/)
+  * [typeORM](https://typeorm.io/#/)
 
  
 ## Usage
