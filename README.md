@@ -14,13 +14,21 @@ The idea is that the employee is able to rent a cash card with more quota than h
 
  
 ## Usage
-**- create .env file with the following content:**
+**create .env file with the following content:**
 
-```json
+```python
 DB_HOST=<hostname>
 DB_USER=<username> 
 DB_PASS=<password>
 DB_NAME=<table_name>
+```
+
+**replace username/password/database on the ormconfig.json:**
+
+```python
+"username": <username>,
+"password": <password>,
+"database": <db_name>,
 ```
 
 * Endopoints:
