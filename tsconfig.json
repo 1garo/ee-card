@@ -1,26 +1,21 @@
 {
-  "compilerOptions": {
-    "module": "commonJS",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "esModuleInterop": true,
-    "baseUrl": ".",
-    "experimentalDecorators": true,
-    "target": "es6",
-    // "allowJs": true,
-    // // Generate d.ts files
-    // "declaration": true,
-    // // This compiler run should
-    // // only output d.ts files
-    // "emitDeclarationOnly": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "*": ["node_modules/*"]
-    }
-  },
-  "include": [
-    "src/**/*"
+   "compilerOptions": {
+      "lib": [
+         "es5",
+         "es6"
+      ],
+      "target": "es5",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "esModuleInterop": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "strict": true,
+   },
+   "exclude": [
+    "node_modules",
+    "src/app",
   ]
 }

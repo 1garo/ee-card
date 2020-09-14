@@ -1,6 +1,6 @@
-node_modules
-dist
-config.json
-yarn.lock
-.env
-yarn*
+.idea/
+.vscode/
+node_modules/
+dist/
+tmp/
+temp/
