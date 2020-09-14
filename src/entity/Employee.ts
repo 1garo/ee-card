@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, Generated} from "typeorm";
 import { compare, hash } from "bcryptjs";
 
 @Entity()
@@ -20,18 +20,20 @@ export class Employee {
     email!: string;
 
     @Column()
-    password!: string;
-
-    @Column()
     passwordHash!: string;
     
+    @Column()
+    @Generated("uuid")
+    companyId!: string;
+
+    // Refactor hash 
     public async checkPassword(password: string): Promise<boolean> {
         return compare(password, this.passwordHash);
     }
 
-    public async encrypt (user: Employee) {
-        if (user.password) {
-            user.passwordHash = await hash(user.password, 8);
+    public async encrypt (user: Employee, password: string) {
+        if (password) {
+            user.passwordHash = await hash(password, 8);
         }
     }
 }
