@@ -1,14 +1,20 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import {Employee} from "../entity/Employee";
+// import { v4 as uuidv4 } from 'uuid';
+import { Company } from "../entity/Company";
 
 createConnection().then(async connection => {
 
     console.log("Inserting a new user into the database...");
-    const user = new Employee();
+    const user = new Company();
     user.firstName = "Timber";
     user.lastName = "Saw";
-    user.age = 25;
+    user.email = 'teste@a';
+    let password = 'aaa';
+    await user.encrypt(user, password);
+    await user.checkPassword(password);
+    console.log('hash: ' + user.passwordHash);
     await connection.manager.save(user);
     console.log("Saved a new user with id: " + user.id);
 
