@@ -18,18 +18,15 @@ export class Company {
     email!: string;
 
     @Column()
-    password!: string;
-
-    @Column()
     passwordHash!: string;
     
     public async checkPassword(password: string): Promise<boolean> {
         return compare(password, this.passwordHash);
     }
 
-    public async encrypt (user: Employee) {
-        if (user.password) {
-            user.passwordHash = await hash(user.password, 8);
-        }
-    }
+    public async encrypt (user: Company, password: string) {
+      if (password) {
+          user.passwordHash = await hash(password, 8);
+      }
+  }
 }
