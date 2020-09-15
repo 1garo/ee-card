@@ -1,4 +1,5 @@
 config.json
+ormconfig.json
 .env.*
 .idea/
 .vscode/
