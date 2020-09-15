@@ -1,12 +1,14 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany} from "typeorm";
 import { compare, hash } from "bcryptjs";
 import { Employee } from "./Employee";
 
 @Entity()
 export class Company {
 
+    @Column()
+    @Generated("uuid")
     @PrimaryGeneratedColumn()
-    id!: number;
+    id!: string;
 
     @Column()
     firstName!: string;
@@ -19,6 +21,9 @@ export class Company {
 
     @Column()
     passwordHash!: string;
+
+    @OneToMany(_type => Employee, employee => employee.company)
+    employees!: Employee[];
     
     public async checkPassword(password: string): Promise<boolean> {
         return compare(password, this.passwordHash);
