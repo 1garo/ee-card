@@ -5,17 +5,18 @@
          "es6"
       ],
       "target": "es5",
-      "module": "commonjs",
+      "module": "CommonJS",
       "moduleResolution": "node",
       "outDir": "./dist",
-      "rootDir": "./src",
+      "rootDir": "./",
+      "baseUrl": ".",
       "esModuleInterop": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "strict": true
+      "strict": true,
+      "resolveJsonModule": true
    },
    "exclude": [
-    "node_modules",
-    "src/app",
+    "node_modules"
   ]
 }
