@@ -44,6 +44,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## Progress
+I'm documenting my progress due today 15/08 using [notion](https://www.notion.so/EE_CARD-99b245127f1544dc91727a1a5eccdf1f)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
