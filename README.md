@@ -13,7 +13,7 @@ The idea is that the employee is able to rent a cash card with more quota than h
   * [typeORM](https://typeorm.io/#/)
 
  
-## Usage
+## API Usage
 **create .env file with the following content:**
 
 ```python
@@ -32,9 +32,18 @@ DB_NAME=<table_name>
 ```
 
 * Endopoints:
-  * /employee - [GET and POST];
-  * /card - [GET and POST];
-  * /company - [GET and POST];
+  * GET /employee?hash="password-hash"
+  * POST /employee with body:
+```json
+{
+ "firstName": "",
+ "lastName": "",
+ "age": 0,
+ "email": "test@test.com"
+}
+```
+  * /card - GET and POST (WIP);
+  * /company - GET and POST (WIP);
 
 **I'm still developing the back-end and modeling the db, after it i'll start the front.**
 
