@@ -1,10 +1,11 @@
-import  createConnection  from "../database/index";
 import {Employee} from "../entity/Employee";
+import {  Connection } from "typeorm";
 
-export default async function findEmployeeByID(employee: Employee): Promise<Employee | undefined> {
-  const a = await createConnection;
-  return await a.getRepository(Employee)
+export default async function findEmployeeByPassword(employee: Employee, CONN: Promise<Connection>): Promise<Employee | undefined> {
+  console.log(employee);
+
+  return await (await CONN).getRepository(Employee)
   .createQueryBuilder("employee")
-  .where("employee.id = :id", { id: '02d36095-90ff-4d83-9843-73b9484162c6' })
+  .where("employee.passwordHash = :hash", { hash: employee.passwordHash })
   .getOne();
 }
