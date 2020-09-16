@@ -4,8 +4,8 @@ import {Entity, Column, Generated, PrimaryGeneratedColumn, OneToMany, OneToOne, 
 export class Card {
 
   @Column()
-  @Generated("uuid")
   @PrimaryGeneratedColumn()
+  @Generated("uuid")
   id!: string;
 
   @Column()

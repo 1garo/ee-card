@@ -7,8 +7,8 @@ import { Card } from "./Card";
 export class Employee {
 
     @Column()
-    @Generated("uuid")
     @PrimaryGeneratedColumn()
+    @Generated("uuid")
     id!: string;
 
     @Column()

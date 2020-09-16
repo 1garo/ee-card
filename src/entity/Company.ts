@@ -6,8 +6,8 @@ import { Employee } from "./Employee";
 export class Company {
 
     @Column()
-    @Generated("uuid")
     @PrimaryGeneratedColumn()
+    @Generated("uuid")
     id!: string;
 
     @Column()
