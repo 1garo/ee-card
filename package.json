@@ -11,7 +11,7 @@
    "name": "ee-card",
    "version": "1.0.0",
    "description": "enterprise card's available to collaborator",
-   "main": "main.ts",
+   "main": "dist/src/index.js",
    "repository": "git@github.com:1garo/ee-card.git",
    "author": "Alexandre Vardai",
    "license": "MIT",
@@ -19,10 +19,10 @@
       "build": "tsc --project ./",
       "build_e": "tsc",
       "watch": "tsc -w",
-      "start_t": "node dist/database/test.js",
+      "start_t": "node dist/src/index.js",
       "lint": "tslint -c tslint.json -p tsconfig.json",
       "start": "yarn run build_e && electron ./dist/main.js",
-      "start_rest": "node ./dist/models/index.js"
+      "start_rest": "nodemon ./src/index.ts"
    },
    "dependencies": {
       "@types/bcryptjs": "^2.4.2",
