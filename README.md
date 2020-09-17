@@ -13,7 +13,19 @@ The idea is that the employee is able to rent a cash card with more quota than h
     * [postgres](https://www.postgresql.org/) 
   * [typeORM](https://typeorm.io/#/)
 
- 
+## Docker Usage
+```
+on root folder run:
+- docker build -t ee_card_server .
+
+after it, you are free to use:
+- docker-compose up/down | start/stop containers
+- docker-compose exec server bash  | interactive bash with api container
+root@...:/# yarn run typeorm migration:run
+docker-compose exec database bash | interactive bash with db container
+root@...:/# psql -h database -d <db_name> -U <username>
+Password for user <username>: insert you password and voilá 
+```
 ## API Usage
 **create database.env file with the following content:**
 
