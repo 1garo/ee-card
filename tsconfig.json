@@ -4,6 +4,7 @@
          "es5",
          "es6"
       ],
+      "removeComments": true,
       "target": "es6",
       "module": "commonjs",
       "moduleResolution": "node",
@@ -17,5 +18,6 @@
    },
    "exclude": [
     "node_modules"
-  ]
+  ],
+  "include": ["./src/**/*.ts"]
 }
