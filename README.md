@@ -9,21 +9,23 @@ The idea is that the employee is able to rent a cash card with more quota than h
   * [node.js](https://nodejs.org/en/)
   * [electron](https://www.electronjs.org/)
   * [express](https://expressjs.com/)
-  * [postgres](https://www.postgresql.org/) ``` aim to use the db on docker later on```
+  * [docker](https://www.docker.com/)
+    * [postgres](https://www.postgresql.org/) 
   * [typeORM](https://typeorm.io/#/)
 
  
 ## API Usage
-**create .env file with the following content:**
+**create database.env file with the following content:**
 
 ```python
-DB_HOST=<hostname>
-DB_USER=<username> 
-DB_PASS=<password>
-DB_NAME=<table_name>
+POSTGRES_USER=<user> 
+POSTGRES_PASSWORD=<pass> 
+POSTGRES_DB=<db_name>
+POSTGRES_URL=postgres://user:pass@database:5432/db_name
+PORT=8000 # this is for the API
 ```
 
-**replace username/password/database on the ormconfig.json:**
+**replace username/password/database on the ormconfig.docker.json:**
 
 ```python
 "username": <username>,
