@@ -9,7 +9,7 @@ The idea is that the employee is able to rent a cash card with more quota than h
   * [node.js](https://nodejs.org/en/)
   * [electron](https://www.electronjs.org/)
   * [express](https://expressjs.com/)
-  * [docker](https://www.docker.com/)
+  * [docker and docker-compose](https://www.docker.com/)
     * [postgres](https://www.postgresql.org/) 
   * [typeORM](https://typeorm.io/#/)
 
