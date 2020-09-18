@@ -13,9 +13,9 @@ RUN yarn install --production
 COPY --from=builder /usr/app/dist ./dist
 
 COPY ormconfig.docker.json ./ormconfig.json
-COPY database.env .
+COPY database.dev.env ./database.env 
 COPY config.json .
-
+COPY tsconfig.json .
 
 EXPOSE 8000 
-CMD node dist/src/index.js
+CMD ["yarn", "start_t"]
