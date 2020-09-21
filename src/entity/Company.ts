@@ -11,10 +11,7 @@ export class Company {
     id!: string;
 
     @Column()
-    firstName!: string;
-
-    @Column()
-    lastName!: string;
+    name!: string
 
     @Column()
     email!: string;
