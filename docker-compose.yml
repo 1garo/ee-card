@@ -5,8 +5,9 @@ services:
     ports:
       - "5433:5432"
     env_file:
-      - database.env # configure postgres
+      - database.dev.env # configure postgres
     volumes:
+      - ./dist:/src/app/dist
       - database-data:/var/lib/postgresql/docker_data/ # persist data even if container shuts down
   server:
     image: ee_card_server 
@@ -17,4 +18,5 @@ services:
     ports:
       - "8000:8000"
 volumes:
+  ./dist:
   database-data: # named volumes can be managed easier using docker-compose
