@@ -1,19 +1,16 @@
 export const CompanySeed = [
   {
-    firstName: "Technology",
-    lastName: "teste",
+    name: "teste",
     email: "teste@teste.com",
     passwordHash:  ""
   },
   {
-    firstName: "tech",
-    lastName: "tt",
+    name: "tt",
     email: "teste@teste.com",
     passwordHash: ""
   },
   {
-    firstName: "techTeste",
-    lastName: "lele",
+    name: "lele",
     email: "teste@teste.com",
     passwordHash: "" 
   },
