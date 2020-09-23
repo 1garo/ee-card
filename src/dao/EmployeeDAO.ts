@@ -45,7 +45,7 @@ export async function createE(employee: Employee, newCard: Card, companyName: st
     }
   }
   return {
-    message: "User was succesfully inserted!",
+    message: "Employee was succesfully inserted on database!",
     status: 200
   }
 } 
