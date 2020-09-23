@@ -28,7 +28,7 @@ export async function createCard(newCard: Card, CONN: Promise<Connection>) {
     }
   }
   return {
-    message: "Card was succesfully inserted!",
+    message: "Card was succesfully inserted on database!",
     status: 200
   }
 } 
