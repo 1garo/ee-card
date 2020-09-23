@@ -1,13 +1,13 @@
 import {Employee} from "../entity/Employee";
-import {findEmployeeByPassword, createE} from "../dao/EmployeeDAO";
+import  * as employeeDAO from "../dao/EmployeeDAO";
 import { Connection } from "typeorm";
 import { Request } from "express";
+import { Card } from "../entity/Card";
 
 export async function findByPassword(employee: Employee, CONN: Promise<Connection>): Promise<Employee | undefined> {
-  return await findEmployeeByPassword(employee, CONN);
+  return await employeeDAO.findEmployeeByPassword(employee, CONN);
 }
 
-export async function create(employee: Employee, CONN: Promise<Connection>) {
-  // TODO: call DAO
-  // return await createE(employee, CONN);
+export async function create(employee: Employee, newCard: Card, companyName: string, CONN: Promise<Connection>) {
+  return await employeeDAO.createE(employee, newCard, companyName, CONN);
 }

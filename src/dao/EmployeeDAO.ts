@@ -12,6 +12,40 @@ export async function findEmployeeByPassword(employee: Employee, CONN: Promise<C
   .getOne();
 }
 
-export async function createE(employee: Employee, CONN: Promise<Connection>) {
-  return;
+export async function createE(employee: Employee, newCard: Card, companyName: string, CONN: Promise<Connection>) {
+  const companyResp: any[] = await (await CONN).manager.query(`select id from company where name = '${companyName}';`); 
+  if (companyResp.length === 0) {
+    return {
+      message: "`company name wasn't found!`",
+      status: 404
+    }
+  }
+  employee.companyId = companyResp[0].id;
+  let cardResp = await (await CONN).createQueryBuilder()
+            .insert()
+            .into(Card)
+            .values(newCard)
+            .execute();
+  if (cardResp.raw.length === 0) {
+    return {
+      message: `Card wasn't inserted`,
+      status: 500 
+    }
+  }
+  employee.ecardId = cardResp.raw[0].id; 
+  let employeeResp = await (await CONN).createQueryBuilder()
+            .insert()
+            .into(Employee)
+            .values(employee)
+            .execute();
+  if (employeeResp.raw.length === 0) {
+    return {
+      message: `Employee wasn't inserted`,
+      status: 500 
+    }
+  }
+  return {
+    message: "User was succesfully inserted!",
+    status: 200
+  }
 } 
