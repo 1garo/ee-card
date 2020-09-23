@@ -4,10 +4,9 @@
 
 The idea is that the employee is able to rent a cash card with more quota than he usually have, and use it on a vacation, buying something for him or his family, 'cause many times personal cards you have to be with the same company for a long time to get more quota/limit.
 
-* Techologies:
+* Technologies:
   * [typescript](https://www.typescriptlang.org/)
   * [node.js](https://nodejs.org/en/)
-  * [electron](https://www.electronjs.org/)
   * [express](https://expressjs.com/)
   * [docker and docker-compose](https://www.docker.com/)
     * [postgres](https://www.postgresql.org/) 
@@ -15,28 +14,25 @@ The idea is that the employee is able to rent a cash card with more quota than h
 
 ## Docker Usage
 ```
-on root folder run:
 - docker build -t ee_card_server .
-
-after it, you are free to use:
 - docker-compose up/down | start/stop containers
 
 - docker-compose exec server bash  | interactive bash with api container
+root@...:/# yarn run typeorm schema:sync
 root@...:/# yarn run typeorm migration:run
 
 docker-compose exec database bash | interactive bash with db container
 root@...:/# psql -h database -d <db_name> -U <username>
-Password for user <username>: insert you password and voilá.
 ```
 ## API Usage
-**create database.env file with the following content:**
+**create database.dev.env file with the following content:**
 
 ```python
 POSTGRES_USER=<user> 
 POSTGRES_PASSWORD=<pass> 
 POSTGRES_DB=<db_name>
 POSTGRES_URL=postgres://user:pass@database:5432/db_name
-PORT=8000 # this is for the API
+PORT=8000 
 ```
 
 **replace username/password/database on the ormconfig.docker.json:**
@@ -47,19 +43,35 @@ PORT=8000 # this is for the API
 "database": <db_name>,
 ```
 
-* Endopoints:
-  * GET /employee?hash="password-hash"
-  * POST /employee with body:
+**Endopoints:**
+* GET /employee?hash="password-hash":
+* POST /employee with:
 ```json
 {
  "firstName": "",
  "lastName": "",
  "age": 0,
- "email": "test@test.com"
+ "email": "",
+ "companyName": "",
+	"card": {
+		"cardNumber": "",
+		"expirationDate": "",
+		"securityCode": 0
+	}
 }
 ```
-  * /card - GET and POST (WIP);
-  * /company - GET and POST (WIP);
+* GET /card/number/cardNumber: return info from cardNumber queried
+  * /card: return all cards
+* POST /card with:
+
+```json
+ {
+		"cardNumber": "",
+		"expirationDate": "",
+		"securityCode": 0
+}
+```
+* /company - GET and POST (WIP);
 
 **I'm still developing the back-end and modeling the db, after it i'll start the front.**
 
