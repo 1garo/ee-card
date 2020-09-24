@@ -31,18 +31,16 @@ POSTGRES_PASSWORD=<pass>
 POSTGRES_DB=<db_name>
 POSTGRES_URL=postgres://user:pass@database:5432/db_name
 PORT=8000 
+DB_PORT=5432
+INTERNAL_DB_PORT=5433
 ```
 
 **replace username/password/database on the ormconfig.docker.json:**
 
 ```python
-POSTGRES_USER=<user> 
-POSTGRES_PASSWORD=<pass> 
-POSTGRES_DB=<db_name>
-POSTGRES_URL=postgres://user:pass@database:5432/db_name
-PORT=8000 
-DB_PORT=5432
-INTERNAL_DB_PORT=5433
+"username": <username>,
+"password": <password>,
+"database": <database>
 ```
 
 ## Response  
