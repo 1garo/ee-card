@@ -23,7 +23,7 @@ root@...:/# psql -h database -d <db_name> -U <username>
 ## API Usage
 **replace .env file with your following infos:**
 
-**database:5432** are the default values, unless of course you change the service name in docker-compose.yml file and db port, do it for your own risk.
+**database:5432** are the default values, database is the service name and the other is the db port.
 
 ```python
 POSTGRES_USER=<user> 
@@ -36,9 +36,13 @@ PORT=8000
 **replace username/password/database on the ormconfig.docker.json:**
 
 ```python
-"username": <username>,
-"password": <password>,
-"database": <db_name>,
+POSTGRES_USER=<user> 
+POSTGRES_PASSWORD=<pass> 
+POSTGRES_DB=<db_name>
+POSTGRES_URL=postgres://user:pass@database:5432/db_name
+PORT=8000 
+DB_PORT=5432
+INTERNAL_DB_PORT=5433
 ```
 
 ## Response  
