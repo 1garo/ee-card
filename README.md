@@ -213,7 +213,6 @@ Content-Length: xy
       "expirationDate": "20/08",
       "securityCode": 794
     },
-    ...
     ]
 }
 ```
