@@ -17,11 +17,7 @@ The idea is that the employee is able to rent a cash card with more quota than h
 - docker build -t ee_card_server .
 - docker-compose up/down | start/stop containers
 
-- docker-compose exec server bash  | interactive bash with api container
-root@...:/# yarn run typeorm schema:sync
-root@...:/# yarn run typeorm migration:run
-
-docker-compose exec database bash | interactive bash with db container
+docker-compose exec database bash | interactive bash with db
 root@...:/# psql -h database -d <db_name> -U <username>
 ```
 ## API Usage
@@ -52,15 +48,7 @@ PORT=8000
 400: Bad request
 401: Unauthorized
 404: Cannot be found
-50X: Server Error
-```
-
-### Example Error Message
-```json
-http code 404
-{
-    "message": "company name wasn't found!"
-}
+50x: Server Error
 ```
 
 ## Employee
