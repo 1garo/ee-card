@@ -3,20 +3,17 @@ services:
   database:
     image: postgres # use latest official postgres version
     ports:
-      - "5433:5432"
+      - "${INTERNAL_DB_PORT}:${DB_PORT}"
     env_file:
-      - database.dev.env # configure postgres
+      - .env # configure postgres
     volumes:
-      - ./dist:/src/app/dist
       - database-data:/var/lib/postgresql/docker_data/ # persist data even if container shuts down
   server:
     image: ee_card_server 
     links:
       - database 
-    environment:
-      DATABASE_URL: postgres://alevardai:dev_db@database:5432/ee_card 
     ports:
-      - "8000:8000"
+      - "${PORT}:${PORT}"
+    command: sh -c "chmod +x entrypoint-server.sh && ./entrypoint-server.sh" 
 volumes:
-  ./dist:
   database-data: # named volumes can be managed easier using docker-compose

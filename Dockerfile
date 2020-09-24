@@ -13,9 +13,8 @@ RUN yarn install --production
 COPY --from=builder /usr/app/dist ./dist
 
 COPY ormconfig.docker.json ./ormconfig.json
-COPY database.dev.env ./database.env 
+COPY .env . 
 COPY config.json .
 COPY tsconfig.json .
-
+COPY entrypoint-server.sh . 
 EXPOSE 8000 
-CMD ["yarn", "start_t"]
