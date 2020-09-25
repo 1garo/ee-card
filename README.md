@@ -23,7 +23,7 @@ root@...:/# psql -h database -d <db_name> -U <username>
 ## API Usage
 **replace .env file with your following infos:**
 
-**database:5432** are the default values, database is the service name and the other is the db port.
+database and 5432 are the default, only change if you know what are you doing.
 
 ```python
 POSTGRES_USER=<user> 
@@ -220,9 +220,6 @@ Content-Length: xy
 ``` 
 
 ## Company (WIP)
-
-**I'm still developing the back-end and modeling the db, after it i'll start the front.**
-
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
