@@ -1,28 +1,19 @@
 import express, {Request, Response} from 'express';
 import { getEmployeeByHash, setEmployee } from '../controller/employee.controller';
 import {CONN} from "../database/db";
-import { createConnection, InsertResult } from 'typeorm';
-import { Employee } from '../entity/Employee';
-import { Card } from '../entity/Card';
-import { Company } from '../entity/Company';
-import { create } from '../service/employee.service';
-import { decodeBase64 } from 'bcryptjs';
 // import { Employee } from '../entity/Employee';
 // import { Card } from '../entity/Card';
 // import { Company } from '../entity/Company';
 
 const router = express.Router();
 
-router.get('/employee', async (req: Request, res: Response) => {
-  const hash = req.query.hash!.toString();
-  if (hash === ''){
-    res.send({"error": "You need to pass the hash as a query parameter!"})
-  } else{
-    getEmployeeByHash(hash, CONN).then(data => {
-      if (data === undefined)
-        res.send({"data": { "message": "Employee with the hash passed doesn't exist", "hash": `${hash}`}})
-      return res.send({"data": data});
-    }).catch((err: any)=> res.send({"error": err}));
+router.get('/employee/hash', async (req: Request, res: Response) => {
+  const auth = req.query.auth!.toString();
+  try{
+    const resp = await getEmployeeByHash(auth, CONN);
+    return res.status(200).send({resp});
+  }catch(e) {
+    return res.status(404).send({message: `${e}`})
   }
 });
 
