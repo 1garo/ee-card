@@ -1,7 +1,5 @@
-import {Employee} from "../entity/Employee";
 import {  Connection } from "typeorm";
 import { Card } from "../entity/Card";
-import { Request } from "express";
 
 export async function findCardByCardNumber(card: Card, CONN: Promise<Connection>): Promise<Card | undefined> {
   return await (await CONN).getRepository(Card)
@@ -10,7 +8,7 @@ export async function findCardByCardNumber(card: Card, CONN: Promise<Connection>
   .getOne();
 }
 
-export async function findAll(card: Card, CONN: Promise<Connection>): Promise<Card[] | undefined> {
+export async function findAll(CONN: Promise<Connection>): Promise<Card[] | undefined> {
   return await (await CONN).getRepository(Card)
   .createQueryBuilder("card").getMany();
 }

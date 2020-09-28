@@ -16,8 +16,8 @@ router.get('/card/number/:cardNumber', async (req: Request, res: Response) => {
   return res.status(200).send(resp);
 });
 
-router.get('/card', async (req: Request, res: Response) => {
-  const cards = await cardController.getAllCards(req.body, CONN);
+router.get('/card', async (_, res: Response) => {
+  const cards = await cardController.getAllCards(CONN);
   if (cards === undefined){
     return res.status(404).send(cards);
   }
@@ -29,7 +29,7 @@ router.post('/card', async (req: Request, res: Response) => {
   if (status === 500){
     return res.status(status).send({error: `${message}`})
   }
-  return res.status(status).send({"message": `${message}`})
+  return res.status(status).send({message: `${message}`})
 });
 
 export {router as cardRouter};

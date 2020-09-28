@@ -8,8 +8,8 @@ export async function findByCardNumber(card: Card, CONN: Promise<Connection>): P
   return await cardDAO.findCardByCardNumber(card, CONN);
 }
 
-export async function findAllCards(card: Card, CONN: Promise<Connection>): Promise<Card[] | undefined> {
-  return await cardDAO.findAll(card, CONN);
+export async function findAllCards(CONN: Promise<Connection>): Promise<Card[] | undefined> {
+  return await cardDAO.findAll(CONN);
 }
 
 export async function create(newCard: Card, CONN: Promise<Connection>) {
