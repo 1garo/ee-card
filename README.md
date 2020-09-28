@@ -1,4 +1,4 @@
-# EE CARD
+# EE CARD API
 
 ### Company Credit Card that the employees can rent
 
@@ -17,8 +17,8 @@ The idea is that the employee is able to rent a cash card with more quota than h
 - docker build -t ee_card_server .
 - docker-compose up/down | start/stop containers
 
-docker-compose exec database bash | interactive bash with db
-root@...:/# psql -h database -d <db_name> -U <username>
+docker-compose exec database bash | interactive bash with db | database is the default service name
+root@...:/# psql -h <service-name> -d <db_name> -U <username>
 ```
 ## API Usage
 **replace .env file with your following infos:**
@@ -59,6 +59,7 @@ INTERNAL_DB_PORT=5433
 **Register a new employee**
 ```json
 POST /employee HTTP/1.1
+Basic Auth: email:password
 Accept: application/json
 Content-Type: application/json
 Content-Length: xy
@@ -101,9 +102,9 @@ Content-Length: xy
 ``` 
 
 **Request:**
-**Get employee by**
+**Get employee by hash**
 ```json
-GET /employee?hash=<employee-hash-id>  
+GET /employee?auth=<employee-pw-hash>  
 HTTP/1.1
 Accept: application/json
 Content-Type: application/json
@@ -207,6 +208,7 @@ Content-Length: xy
 }
 ```
 
+
 **Failed Response:**
 ```json
 HTTP/1.1 404 Not Found
@@ -218,9 +220,82 @@ Content-Length: xy
   "cards": []
 }
 ``` 
+**Other endpoints**
+
+```
+GET /card/number/<cardNumber> - retrive the info about the card passed or throw error
+```
 
 ## Company (WIP)
+**Request:**
+**Get all companies**
+```json
+GET /company HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
 
+```
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+Server: My RESTful API
+Content-Type: application/json
+Content-Length: xy
+
+{
+"data": [
+    {
+      "id": "b3a32c12-18c8-4477-9d46-8ffa65eb9b18",
+      "name": "tt",
+      "email": "test@test.com"
+    },
+    ]
+}
+```
+
+
+**Failed Response:**
+```json
+HTTP/1.1 404 Not Found
+Server: My RESTful API
+Content-Type: application/json
+Content-Length: xy
+
+{
+  "message": "None company was found registered!"
+}
+``` 
+**Request:**
+**Register a new company**
+```json
+POST /company HTTP/1.1
+Basic Auth: email:password
+Accept: application/json
+Content-Type: application/json
+Content-Length: xy
+{
+   "name": "testing",
+   "email": "test@test.com"
+}
+```
+
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+Server: My RESTful API
+Content-Type: application/json
+Content-Length: xy
+
+{
+  "data": "Company was succesfully inserted on database!"
+}
+```
+**Other endpoints**
+
+```
+GET /company/hash?auth=<company-pw-hash> - retrive the info about the company passed or throw error
+```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
