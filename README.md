@@ -21,7 +21,7 @@ docker-compose exec database bash | interactive bash with db | database is the d
 root@...:/# psql -h <service-name> -d <db_name> -U <username>
 ```
 ## API Usage
-**replace .env file with your following infos:**
+**create .env file with your following info:**
 
 database and 5432 are the default, only change if you know what are you doing.
 
