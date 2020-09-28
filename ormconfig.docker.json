@@ -6,7 +6,7 @@
   "password": "dev_db",
   "database": "ee_card",
   "synchronize": false,
-  "logging": false,
+  "logging": true,
   "entities": ["dist/src/entity/**/*"],
   "migrations": ["dist/src/migration/**/*"],
   "cli": {
