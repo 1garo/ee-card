@@ -291,6 +291,17 @@ Content-Length: xy
   "data": "Company was succesfully inserted on database!"
 }
 ```
+**Failed Response:**
+```json
+HTTP/1.1 500 Internal server error
+Server: My RESTful API
+Content-Type: application/json
+Content-Length: xy
+
+{
+  "error": "Company wasn't inserted"
+}
+``` 
 **Other endpoints**
 
 ```
