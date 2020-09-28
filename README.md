@@ -17,8 +17,9 @@ The idea is that the employee is able to rent a cash card with more quota than h
 - docker build -t ee_card_server .
 - docker-compose up/down | start/stop containers
 
-docker-compose exec database bash | interactive bash with db | database is the default service name
+- docker-compose exec database bash | interactive bash with db (database is the default service name).
 root@...:/# psql -h <service-name> -d <db_name> -U <username>
+- docker-compose exec server bash | interactive bash with server
 ```
 ## API Usage
 **create .env file with your following info:**
