@@ -16,17 +16,14 @@
    "license": "MIT",
    "scripts": {
       "build": "tsc --project ./",
-      "build_e": "tsc",
       "watch": "tsc -w",
-      "start_t": "node dist/src/index.js",
-      "lint": "tslint -c tslint.json -p tsconfig.json",
-      "start": "yarn run build_e && electron ./dist/main.js",
-      "start_rest": "nodemon ./src/index.ts"
+      "start": "node dist/src/index.js"
    },
    "dependencies": {
       "@types/bcryptjs": "^2.4.2",
       "@types/uuid": "^8.3.0",
       "bcryptjs": "^2.4.3",
+      "class-validator": "^0.12.2",
       "dotenv": "^8.2.0",
       "express": "^4.17.1",
       "pg": "^8.3.3",
