@@ -1,11 +1,18 @@
 import * as cardService from "../service/card.service";
 import { Connection } from "typeorm";
-import { Card} from "../entity/Card";
-import {  validate} from "class-validator";
+import { Card } from "../entity/Card";
+import { validate } from "class-validator";
+
+// TODO: test new validations on all entities
 export async function getCardByNumber(cardNumber: string, CONN: Promise<Connection>): Promise<Card | undefined> {
   const card = new Card();
   card.cardNumber = cardNumber;
-  return await cardService.findByCardNumber(card, CONN);
+  const errors = await validate(card);
+  if (errors.length > 0){
+    return Promise.reject("Cannot validate CARD, send all the required properties")
+  }else {
+    return await cardService.findByCardNumber(card, CONN);
+  }
 }
 
 export async function getAllCards(CONN: Promise<Connection>): Promise<Card[] | undefined> {
