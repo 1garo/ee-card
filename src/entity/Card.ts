@@ -1,8 +1,7 @@
-import {Entity, Column, Generated, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn} from "typeorm";
-
+import { Entity, Column, Generated, PrimaryGeneratedColumn } from "typeorm";
+import { IsNotEmpty} from "class-validator";
 @Entity()
 export class Card {
-
   @Column()
   @PrimaryGeneratedColumn()
   @Generated("uuid")
@@ -15,5 +14,6 @@ export class Card {
   expirationDate!: string;
 
   @Column()
+  @IsNotEmpty()
   securityCode!: number;
 }
