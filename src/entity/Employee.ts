@@ -2,6 +2,7 @@ import {Entity, PrimaryGeneratedColumn, Column, Generated, ManyToMany, ManyToOne
 import { compare, hash } from "bcryptjs";
 import { Company } from "./Company";
 import { Card } from "./Card";
+import { IsNotEmpty } from "class-validator";
 
 @Entity()
 export class Employee {
@@ -12,32 +13,41 @@ export class Employee {
     id!: string;
 
     @Column()
+    @IsNotEmpty()
     firstName!: string;
 
     @Column()
+    @IsNotEmpty()
     lastName!: string;
 
     @Column()
+    @IsNotEmpty()
     age!: number;
 
     @Column()
+    @IsNotEmpty()
     email!: string;
 
     @Column()
+    @IsNotEmpty()
     passwordHash!: string;
     
     @Column()
+    @IsNotEmpty()
     @Generated("uuid")
     companyId!: string;
 
     @Column()
+    @IsNotEmpty()
     @Generated("uuid")
     ecardId!: string
 
     @ManyToOne(_type => Company, company => company.employees)
+    @IsNotEmpty()
     company!: Company;
 
     @OneToOne(_type => Card)
+    @IsNotEmpty()
     @JoinColumn()
     ecard!: Card;
 
