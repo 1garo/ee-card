@@ -11,6 +11,9 @@ The idea is that the employee is able to rent a cash card with more quota than h
   * [docker and docker-compose](https://www.docker.com/)
     * [postgres](https://www.postgresql.org/) 
   * [typeORM](https://typeorm.io/#/)
+  * [aws cloud](https://aws.amazon.com/)
+  
+For the sake of learning, I deployed a beta version of the code today (28/09) on aws cloud(18.220.31.149), the endpoints you can see below.
 
 ## Docker Usage
 ```
