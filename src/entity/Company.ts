@@ -1,6 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany} from "typeorm";
 import { compare, hash } from "bcryptjs";
 import { Employee } from "./Employee";
+import { IsNotEmpty } from "class-validator";
 
 @Entity()
 export class Company {
@@ -11,12 +12,15 @@ export class Company {
     id!: string;
 
     @Column()
+    @IsNotEmpty()
     name!: string
 
     @Column()
+    @IsNotEmpty()
     email!: string;
 
     @Column()
+    @IsNotEmpty()
     passwordHash!: string;
 
     @OneToMany(_type => Employee, employee => employee.company)
