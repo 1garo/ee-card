@@ -15,6 +15,8 @@ The idea is that the employee is able to rent a cash card with more quota than h
   
 For the sake of learning, I deployed a beta version of the code today (28/09) on aws cloud(18.220.31.149), the endpoints you can see below.
 
+The endpoint is not working anymore, Free Tier Usage Limit :( 
+
 ## Docker Usage
 ```
 - docker build -t ee_card_server .
