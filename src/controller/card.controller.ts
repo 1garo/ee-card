@@ -4,6 +4,7 @@ import { Card } from "../entity/Card";
 import { validate } from "class-validator";
 
 // TODO: test new validations on all entities
+// TODO: REFACTOR ALL THIS SHIT
 export async function getCardByNumber(cardNumber: string, CONN: Promise<Connection>): Promise<Card | undefined> {
   const card = new Card();
   card.cardNumber = cardNumber;
