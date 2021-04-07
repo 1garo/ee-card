@@ -9,6 +9,8 @@ grant all privileges on database ee_card to ee_card_user;
 EOF
 
 minikube start --driver=docker
+minikube docker-env
+eval $(minikube -p minikube docker-env)
 minikube kubectl -- create -f ./k8s/server-deployment.yaml
 minikube kubectl -- create -f ./k8s/database-deployment.yaml
 minikube kubectl -- expose deployment database --type=NodePort --name=database 
