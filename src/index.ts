@@ -1,10 +1,12 @@
 import express from 'express';
 import { json } from 'body-parser';
 import fastify from 'fastify';
-import { employeeRouter } from './router/employeeRoute';
+//import { employeeRouter } from './router/employeeRoute';
 //import { cardRouter } from './router/cardRoute';
-import { companyRouter } from './router/companyRoute';
+//import { companyRouter } from './router/companyRoute';
 import { cardRouter } from './router/v1/card';
+import { companyRouter } from './router/v1/company';
+import { employeeRouter } from './router/v1/employee';
 //import {} from './router/v1/users';
 //const app = express();
 //TODO: generate kompose again because a typo on db user name
@@ -14,4 +16,6 @@ const app = fastify(
 
 app.register(require('fastify-url-data'))
 app.register(cardRouter, {logLevel: 'debug', prefix: '/v1'})
+app.register(companyRouter, {logLevel: 'debug', prefix: '/v1'})
+app.register(employeeRouter, {logLevel: 'debug', prefix: '/v1'})
 app.listen(3000);
