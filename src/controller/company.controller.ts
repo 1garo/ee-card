@@ -2,26 +2,22 @@ import * as companyService from "../service/company.service";
 import { Connection } from "typeorm";
 import { Company } from "../entity/Company";
 import { validate } from "class-validator";
+import { hash } from "bcryptjs";
 
 export async function getCompanyByHash(passwordHash: string, CONN: Promise<Connection>) {
   const company = new Company();
   company.passwordHash = passwordHash;
-  const errors = await validate(company);
-  if (errors.length > 0){
-    return Promise.reject("Cannot validate CARD, send all the required properties")
-  }else {
-    const companyResp = await companyService.findByCompanyNumber(company, CONN);
-    if (!companyResp){
-      return {
-        data: "None company was found registered with the hash passed!",
-        status: 404
-      } 
-    }
-    delete companyResp['passwordHash'];
+  const companyResp = await companyService.findByCompanyNumber(company, CONN);
+  if (!companyResp){
     return {
-      data: companyResp,
-      status: 200
+      data: "None company was found registered with the hash passed!",
+      status: 404
     }
+  }
+  delete companyResp['passwordHash'];
+  return {
+    data: companyResp,
+    status: 200
   }
 }
 
@@ -31,7 +27,7 @@ export async function getAllCompanies(CONN: Promise<Connection>) {
     return {
       data: "None company was found registered!",
       status: 404
-    } 
+    }
   }
   companyResp.forEach(data => delete data['passwordHash']);
   return {
@@ -40,7 +36,7 @@ export async function getAllCompanies(CONN: Promise<Connection>) {
   }
 }
 
-export async function setCard(body: any, basicAuth: string, CONN: Promise<Connection>) {
+export async function setCompany(body: any, basicAuth: string, CONN: Promise<Connection>) {
   let company = new Company();
   company.email = body.email;
   company.name = body.name;
@@ -48,13 +44,13 @@ export async function setCard(body: any, basicAuth: string, CONN: Promise<Connec
   await company.encrypt(company, auth);
   const errors = await validate(company);
   if (errors.length > 0){
-    return Promise.reject("Cannot validate CARD, send all the required properties")
+    return Promise.reject("Cannot validate COMPANY, send all the required properties")
   }else {
-    const companyResp = await companyService.create(company, CONN); 
+    const companyResp = await companyService.create(company, CONN);
     if (companyResp.raw.length === 0) {
       return {
         data: `Company wasn't inserted`,
-        status: 500 
+        status: 500
       }
     }else {
       return {
