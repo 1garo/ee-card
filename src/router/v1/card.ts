@@ -21,7 +21,8 @@ const card = async (fastify, _opts, done) => {
     if (cards === undefined){
       return reply.code(404).send(cards);
     }
-    return reply.code(200).send({cards});
+    reply.code(200).send(cards)
+    // return reply.code(200).send({cards});
   });
 
   fastify.post('/card', async (req, reply: fast.FastifyReply) => {
