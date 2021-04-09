@@ -4,7 +4,7 @@ import * as cardController from '../../controller/card.controller';
 
 const card = async (fastify, _opts, done) => {
 
-  fastify.get('/card/number/:cardNumber', async function (req, reply: fast.FastifyReply) {
+  fastify.get('/card/number/:cardNumber', async (req, reply: fast.FastifyReply) => {
       const cardNumber = req.params.cardNumber;
       if (cardNumber === '') {
         reply.code(400).send({ error: "cardNumber as parameter wasn't provided!" });
@@ -17,7 +17,7 @@ const card = async (fastify, _opts, done) => {
       reply.code(200).send(resp);
     });
 
-  fastify.get('/card', async function (reply: fast.FastifyReply) {
+  fastify.get('/card', async (_req, reply: fast.FastifyReply) => {
     const cards = await cardController.getAllCards(CONN);
     if (cards === undefined){
        reply.code(404).send(cards);
@@ -26,7 +26,7 @@ const card = async (fastify, _opts, done) => {
     reply.code(200).send(cards)
   });
 
-  fastify.post('/card', async function (req, reply: fast.FastifyReply) {
+  fastify.post('/card', async (req, reply: fast.FastifyReply) => {
       const { message, status } = await cardController.setCard(req.body, CONN);
       if (status === 500) {
         reply.code(status).send({ error: `${message}` });
