@@ -6,8 +6,8 @@ services:
       PORT: '8000'
       POSTGRES_DB: ee_card
       POSTGRES_PASSWORD: ee_card_password
-      POSTGRES_URL: postgres://user_card_user:ee_card_password@database:5432/ee_card
-      POSTGRES_USER: user_card_user
+      POSTGRES_URL: postgres://ee_card_user:ee_card_password@database:5432/ee_card
+      POSTGRES_USER:ee_card_user 
     image: postgres
     ports:
     - published: 5433
@@ -22,8 +22,8 @@ services:
       PORT: '8000'
       POSTGRES_DB: ee_card
       POSTGRES_PASSWORD: ee_card_password
-      POSTGRES_URL: postgres://user_card_user:ee_card_password@database:5432/ee_card
-      POSTGRES_USER: user_card_user
+      POSTGRES_URL: postgres://ee_card_user:ee_card_password@database:5432/ee_card
+      POSTGRES_USER: ee_card_user 
     image: ee_card_server
     links:
     - database
