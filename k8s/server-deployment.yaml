@@ -40,9 +40,9 @@ spec:
             - name: POSTGRES_PASSWORD
               value: ee_card_password
             - name: POSTGRES_URL
-              value: postgres://user_card_user:ee_card_password@database:5432/ee_card
+              value: postgres://ee_card_user:ee_card_password@database:5432/ee_card
             - name: POSTGRES_USER
-              value: user_card_user
+              value: ee_card_user
           image: ee_card_server:latest
           name: server
           imagePullPolicy: Never
