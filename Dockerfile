@@ -3,7 +3,7 @@ WORKDIR /usr/app
 COPY package*.json ./
 RUN yarn install
 COPY . .
-RUN yarn run build 
+RUN yarn run build
 
 FROM node
 WORKDIR /usr/app
@@ -13,8 +13,8 @@ RUN yarn install --production
 COPY --from=builder /usr/app/dist ./dist
 
 COPY ormconfig.docker.json ./ormconfig.json
-COPY .env . 
+COPY .env .
 COPY config.json .
 COPY tsconfig.json .
-COPY entrypoint-server.sh . 
-EXPOSE 8000 
+COPY entrypoint-server.sh .
+EXPOSE 8000
