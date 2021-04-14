@@ -2,7 +2,7 @@
   "type": "postgres",
   "host": "database",
   "port": 5432,
-  "username": "user_card_user",
+  "username": "ee_card_user",
   "password": "ee_card_password",
   "database": "ee_card",
   "synchronize": false,
