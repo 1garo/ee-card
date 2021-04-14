@@ -1,19 +1,21 @@
-version: '3'
+version: '3.2'
 services:
   database:
     image: postgres # use latest official postgres version
     ports:
-      - "${INTERNAL_DB_PORT}:${DB_PORT}"
+      - ${INTERNAL_DB_PORT}:${DB_PORT}
     env_file:
       - .env # configure postgres
     volumes:
       - database-data:/var/lib/postgresql/docker_data/ # persist data even if container shuts down
   server:
-    image: ee_card_server 
+    image: ee_card_server
     links:
-      - database 
+      - database
+    env_file:
+      - .env # configure postgres
     ports:
-      - "${PORT}:${PORT}"
-    command: sh -c "chmod +x entrypoint-server.sh && ./entrypoint-server.sh" 
+      - ${PORT}:${PORT}
+    command: sh -c "chmod +x entrypoint-server.sh && ./entrypoint-server.sh"
 volumes:
   database-data: # named volumes can be managed easier using docker-compose

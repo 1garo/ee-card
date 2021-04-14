@@ -1,6 +1,6 @@
 config.json
 ormconfig.json
-.env.*
+.env
 .idea/
 .vscode/
 node_modules/

@@ -8,12 +8,7 @@ import { validate } from "class-validator";
 export async function getCardByNumber(cardNumber: string, CONN: Promise<Connection>): Promise<Card | undefined> {
   const card = new Card();
   card.cardNumber = cardNumber;
-  const errors = await validate(card);
-  if (errors.length > 0){
-    return Promise.reject("Cannot validate CARD, send all the required properties")
-  }else {
-    return await cardService.findByCardNumber(card, CONN);
-  }
+  return await cardService.findByCardNumber(card, CONN);
 }
 
 export async function getAllCards(CONN: Promise<Connection>): Promise<Card[] | undefined> {
@@ -33,6 +28,6 @@ export async function setCard(body: Card, CONN: Promise<Connection>) {
       status: 500
     }
   }else {
-    return await cardService.create(card, CONN); 
+    return await cardService.create(card, CONN);
   }
 }

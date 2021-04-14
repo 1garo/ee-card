@@ -4,20 +4,16 @@
 
 The idea is that the employee is able to rent a cash card with more quota than he usually have, and use it on a vacation, buying something for him or his family, 'cause many times personal cards you have to be with the same company for a long time to get more quota/limit.
 
-* Technologies:
-  * [typescript](https://www.typescriptlang.org/)
-  * [node.js](https://nodejs.org/en/)
-  * [express](https://expressjs.com/)
-  * [docker and docker-compose](https://www.docker.com/)
-    * [postgres](https://www.postgresql.org/) 
-  * [typeORM](https://typeorm.io/#/)
-  * [aws cloud](https://aws.amazon.com/)
-  
-For the sake of learning, I deployed a beta version of the code today (28/09) on aws cloud(18.220.31.149), the endpoints you can see below.
-
-The endpoint is not working anymore, Free Tier Usage Limit :( 
+- Technologies:
+  - [typescript](https://www.typescriptlang.org/)
+  - [node.js](https://nodejs.org/en/)
+  - [fastify](https://www.fastify.io/)
+  - [k8s](https://kubernetes.io/)
+    - [postgres](https://www.postgresql.org/)
+      - [typeORM](https://typeorm.io/#/)
 
 ## Docker Usage
+
 ```
 - docker build -t ee_card_server .
 - docker-compose up/down | start/stop containers
@@ -26,17 +22,19 @@ The endpoint is not working anymore, Free Tier Usage Limit :(
 root@...:/# psql -h <service-name> -d <db_name> -U <username>
 - docker-compose exec server bash | interactive bash with server
 ```
+
 ## API Usage
+
 **create .env file with your following info:**
 
 database and 5432 are the default, only change if you know what are you doing.
 
 ```python
-POSTGRES_USER=<user> 
-POSTGRES_PASSWORD=<pass> 
+POSTGRES_USER=<user>
+POSTGRES_PASSWORD=<pass>
 POSTGRES_DB=<db_name>
 POSTGRES_URL=postgres://user:pass@database:5432/db_name
-PORT=8000 
+PORT=8000
 DB_PORT=5432
 INTERNAL_DB_PORT=5433
 ```
@@ -49,8 +47,10 @@ INTERNAL_DB_PORT=5433
 "database": <database>
 ```
 
-## Response  
+## Response
+
 ### Codes
+
 ```
 200: Success
 400: Bad request
@@ -63,6 +63,7 @@ INTERNAL_DB_PORT=5433
 
 **Request:**
 **Register a new employee**
+
 ```json
 POST /employee HTTP/1.1
 Basic Auth: email:password
@@ -84,6 +85,7 @@ Content-Length: xy
 ```
 
 **Successful Response:**
+
 ```json
 HTTP/1.1 200 OK
 Server: My RESTful API
@@ -96,6 +98,7 @@ Content-Length: xy
 ```
 
 **Failed Response:**
+
 ```json
 HTTP/1.1 404 or 500
 Server: My RESTful API
@@ -105,12 +108,13 @@ Content-Length: xy
 {
     "message": "Employee wasn't inserted",
 }
-``` 
+```
 
 **Request:**
 **Get employee by hash**
+
 ```json
-GET /employee?auth=<employee-pw-hash>  
+GET /employee?auth=<employee-pw-hash>
 HTTP/1.1
 Accept: application/json
 Content-Type: application/json
@@ -119,6 +123,7 @@ Content-Length: xy
 ```
 
 **Successful Response:**
+
 ```json
 HTTP/1.1 200 OK
 Server: My RESTful API
@@ -126,7 +131,7 @@ Content-Type: application/json
 Content-Length: xy
 
 {
-  "message": 
+  "message":
   {
   	"id": "...",
 	"firstName": "nameTest",
@@ -138,6 +143,7 @@ Content-Length: xy
 ```
 
 **Failed Response:**
+
 ```json
 HTTP/1.1 404 or 500
 Server: My RESTful API
@@ -147,11 +153,13 @@ Content-Length: xy
 {
     "error": "Employee with the hash passed doesn't exist",
 }
-``` 
+```
 
 ## Card
+
 **Request:**
 **Get specific card**
+
 ```json
 GET /card/number/<CardNumber> HTTP/1.1
 Accept: application/json
@@ -159,7 +167,9 @@ Content-Type: application/json
 Content-Length: xy
 
 ```
+
 **Successful Response:**
+
 ```json
 HTTP/1.1 200 OK
 Server: My RESTful API
@@ -175,6 +185,7 @@ Content-Length: xy
 ```
 
 **Failed Response:**
+
 ```json
 HTTP/1.1 404 Not Found
 Server: My RESTful API
@@ -184,10 +195,11 @@ Content-Length: xy
 {
   "error": "Cardnumber wasn't found!"
 }
-``` 
+```
 
 **Request:**
 **Get all cards**
+
 ```json
 GET /card HTTP/1.1
 Accept: application/json
@@ -195,7 +207,9 @@ Content-Type: application/json
 Content-Length: xy
 
 ```
+
 **Successful Response:**
+
 ```json
 HTTP/1.1 200 OK
 Server: My RESTful API
@@ -214,8 +228,8 @@ Content-Length: xy
 }
 ```
 
-
 **Failed Response:**
+
 ```json
 HTTP/1.1 404 Not Found
 Server: My RESTful API
@@ -225,7 +239,8 @@ Content-Length: xy
 {
   "cards": []
 }
-``` 
+```
+
 **Other endpoints**
 
 ```
@@ -233,8 +248,10 @@ GET /card/number/<cardNumber> - retrive the info about the card passed or throw 
 ```
 
 ## Company (WIP)
+
 **Request:**
 **Get all companies**
+
 ```json
 GET /company HTTP/1.1
 Accept: application/json
@@ -242,7 +259,9 @@ Content-Type: application/json
 Content-Length: xy
 
 ```
+
 **Successful Response:**
+
 ```json
 HTTP/1.1 200 OK
 Server: My RESTful API
@@ -260,8 +279,8 @@ Content-Length: xy
 }
 ```
 
-
 **Failed Response:**
+
 ```json
 HTTP/1.1 404 Not Found
 Server: My RESTful API
@@ -271,9 +290,11 @@ Content-Length: xy
 {
   "message": "None company was found registered!"
 }
-``` 
+```
+
 **Request:**
 **Register a new company**
+
 ```json
 POST /company HTTP/1.1
 Basic Auth: email:password
@@ -287,6 +308,7 @@ Content-Length: xy
 ```
 
 **Successful Response:**
+
 ```json
 HTTP/1.1 200 OK
 Server: My RESTful API
@@ -297,7 +319,9 @@ Content-Length: xy
   "data": "Company was succesfully inserted on database!"
 }
 ```
+
 **Failed Response:**
+
 ```json
 HTTP/1.1 500 Internal server error
 Server: My RESTful API
@@ -307,22 +331,28 @@ Content-Length: xy
 {
   "error": "Company wasn't inserted"
 }
-``` 
+```
+
 **Other endpoints**
 
 ```
 GET /company/hash?auth=<company-pw-hash> - retrive the info about the company passed or throw error
 ```
+
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## Progress
+
 I'm documenting my progress due today 15/08 using [notion](https://www.notion.so/EE_CARD-99b245127f1544dc91727a1a5eccdf1f)
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Made by ♥ Alexandre Vardai 👋 
+## Made by ♥ Alexandre Vardai 👋
+
 [Find me here](https://www.linkedin.com/in/alexandre-vardai-b8255b15b/)
