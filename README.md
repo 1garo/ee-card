@@ -7,10 +7,10 @@ The idea is that the employee is able to rent a cash card with more quota than h
 - Technologies:
   - [typescript](https://www.typescriptlang.org/)
   - [node.js](https://nodejs.org/en/)
-  - [express](https://expressjs.com/)
-  - [docker and docker-compose](https://www.docker.com/)
+  - [fastify](https://www.fastify.io/)
+  - [k8s](https://kubernetes.io/)
     - [postgres](https://www.postgresql.org/)
-  - [typeORM](https://typeorm.io/#/)
+      - [typeORM](https://typeorm.io/#/)
 
 ## Docker Usage
 
