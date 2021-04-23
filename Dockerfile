@@ -13,7 +13,7 @@ RUN yarn install --production
 COPY --from=builder /usr/app/dist ./dist
 
 COPY ormconfig.docker.json ./ormconfig.json
-COPY .env .
+COPY .env.example .
 COPY config.json .
 COPY tsconfig.json .
 COPY entrypoint-server.sh .
